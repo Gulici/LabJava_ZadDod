@@ -29,7 +29,7 @@ public class Data {
                 "| Forestation | All trees | Trees in fire | Trees not in fire | inFire/All ratio |\n" +
                 "----------------------------------------------------------------------------------\n");
         for (Integer key : data.keySet()) {
-            String temp = new String();
+            String temp;
 
             int allTrees = data.get(key)[1];
             int burnTrees = data.get(key)[0];
@@ -42,7 +42,6 @@ public class Data {
                 ratio = (double) data.get(key)[0] / data.get(key)[1];
             }
             temp = String.format("| %11.2f | %9d | %13d | %17d | %16.2f |\n", forestation, allTrees, burnTrees, nBurnTrees, ratio);
-
 
             table.append(temp);
         }

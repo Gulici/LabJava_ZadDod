@@ -9,6 +9,7 @@ public class Sim {
         this.n = n;
         this.forestation = forestation;
         MapForrest = new String[n][n];
+        setMap();
     }
 
     public void setMap(){
@@ -38,7 +39,7 @@ public class Sim {
             }
         }
 
-        int pAllTree = n*n - pEmpty;
+        int pAllTree = pTree+pBurn;
         int[] result = {pBurn,pAllTree,pTree};
 
 //        System.out.println("Trees:\t\t\t"+pTree);
@@ -51,7 +52,7 @@ public class Sim {
         for(int x = 0; x < n; x++)
             if(MapForrest[0][x].equals("T")) MapForrest[0][x]="B";
     }
-    private boolean isFire(int y, int x){
+    private boolean inFire(int y, int x){
         return MapForrest[y][x].equals("B");
     }
     private boolean setFireNear(int y, int x){
@@ -73,7 +74,7 @@ public class Sim {
     private boolean fireStep(){
         for (int y = 0; y< n; y++){
             for(int x = 0; x< n; x++){
-                if(isFire(y,x)){
+                if(inFire(y,x)){
                     if(setFireNear(y,x)){
                         return true;
                     }
@@ -85,7 +86,7 @@ public class Sim {
 
     public int[] fireSim(){
         fireStart();
-        while (fireStep());
+        while (fireStep()){}
         return countMap();
     }
 }

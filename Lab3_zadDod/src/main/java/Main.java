@@ -3,7 +3,7 @@ import java.util.Map;
 import java.io.FileWriter;
 public class Main {
     public static void main(String[] args){
-        RunSimulation runSimulation = new RunSimulation(10);
+        RunSimulation runSimulation = new RunSimulation(100);
         runSimulation.startSimulation();
         Map<Integer, int[]> result = runSimulation.getResult();
         Data data = new Data(result);
